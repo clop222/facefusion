@@ -3,7 +3,6 @@ import glob
 import os
 import shutil
 import tempfile
-import filetype
 from pathlib import Path
 
 import facefusion.globals
@@ -62,29 +61,11 @@ def is_directory(directory_path : str) -> bool:
 	return bool(directory_path and os.path.isdir(directory_path))
 
 
-def is_image(image_path : str) -> bool:
-	if is_file(image_path):
-		return filetype.helpers.is_image(image_path)
-	return False
-
-
-def are_images(image_paths : List[str]) -> bool:
-	if image_paths:
-		return all(is_image(image_path) for image_path in image_paths)
-	return False
-
-
-def is_video(video_path : str) -> bool:
-	if is_file(video_path):
-		return filetype.helpers.is_video(video_path)
-	return False
-
-
 def resolve_relative_path(path : str) -> str:
 	return os.path.abspath(os.path.join(os.path.dirname(__file__), path))
 
 
-def list_files_names(path : str) -> Optional[List[str]]:
+def list_file_names(path : str) -> Optional[List[str]]:
 	if os.path.exists(path):
 		files = os.listdir(path)
 		return [ Path(file).stem for file in files if not Path(file).stem.startswith(('.', '__')) ]
