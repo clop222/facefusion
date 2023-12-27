@@ -84,7 +84,7 @@ def resolve_relative_path(path : str) -> str:
 	return os.path.abspath(os.path.join(os.path.dirname(__file__), path))
 
 
-def list_module_names(path : str) -> Optional[List[str]]:
+def list_files_names(path : str) -> Optional[List[str]]:
 	if os.path.exists(path):
 		files = os.listdir(path)
 		return [ Path(file).stem for file in files if not Path(file).stem.startswith(('.', '__')) ]
