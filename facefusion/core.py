@@ -97,7 +97,7 @@ def cli() -> None:
 		frame_processor_module.register_args(group_frame_processors)
 	# uis
 	group_uis = program.add_argument_group('uis')
-	group_uis.add_argument('--ui-layouts', help = wording.get('ui_layouts_help').format(choices = ', '.join(list_directory('facefusion/uis/layouts'))), default = ['default'], nargs ='+')
+	group_uis.add_argument('--ui-layouts', help = wording.get('ui_layouts_help').format(choices = ', '.join(list_directory('facefusion/uis/layouts'))), default = [ 'default' ], nargs = '+')
 	run(program)
 
 
